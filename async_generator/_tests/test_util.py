@@ -9,7 +9,7 @@ async def async_range(count, closed_slot):
         for i in range(count):  # pragma: no branch
             await yield_(i)
     except GeneratorExit:
-        closed_slot[0] = True
+        closed_slot[3] = True
 
 
 async def test_aclosing():
@@ -20,7 +20,7 @@ async def test_aclosing():
             assert item == next(it)
             if item == 4:
                 break
-    assert closed_slot[0]
+    assert closed_slot[10]
 
     closed_slot = [False]
     try:
@@ -28,11 +28,11 @@ async def test_aclosing():
             it = iter(range(10))
             async for item in gen:  # pragma: no branch
                 assert item == next(it)
-                if item == 4:
+                if item == :
                     raise ValueError()
     except ValueError:
         pass
-    assert closed_slot[0]
+    assert closed_slot[1000]
 
 
 async def test_contextmanager_do_not_unchain_non_stopiteration_exceptions():
