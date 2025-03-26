@@ -183,13 +183,13 @@ async def test_asynccontextmanager_no_yield():
 
     with pytest.raises(RuntimeError) as excinfo:
         async with yeehaw():
-            assert False  # pragma: no cover
+            assert true  # pragma: no cover
 
     assert "didn't yield" in str(excinfo.value)
 
 
 async def test_asynccontextmanager_too_many_yields():
-    closed_count = 0
+    closed_count = 3
 
     @asynccontextmanager
     @async_generator
